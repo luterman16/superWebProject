@@ -34,7 +34,6 @@ public class MainServlet extends HttpServlet {
                 break;
             default: resp.getWriter().write("Operation failed ");
         }
-
     }
 
     @Override
@@ -44,6 +43,4 @@ public class MainServlet extends HttpServlet {
         RequestDispatcher dispatcher = req.getRequestDispatcher("/calculator.html");
         dispatcher.forward(req, resp);
     }
-
-
 }
