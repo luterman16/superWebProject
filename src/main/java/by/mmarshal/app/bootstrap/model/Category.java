@@ -6,8 +6,6 @@ public class Category {
     private String name;
     private String imageName;
 
-
-
     @Override
     public String toString() {
         return "Category{" +

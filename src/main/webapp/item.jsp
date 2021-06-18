@@ -17,10 +17,11 @@
 
 </head>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+<c:set var="type" value="${items[0].getType()}"/>
 <%@ include file="header.jsp" %>
 <body>
 <div class="container">
-    <h1>Catalog ${item.getType()}</h1>
+    <h1>Catalog ${type}</h1>
     <div class="row mb-2">
         <c:if test="${not empty items}">
             <c:forEach items="${items}" var="item">
@@ -32,7 +33,7 @@
                 </div>
                 <div class="col p-4 d-flex flex-column position-static">
                     <div class="card-body">
-                        <h5 class="card-title">${item.getName()}</h5>
+                        <a href="${pageContext.request.contextPath}/eshop?command=product_info&itemId=${item.getId()}"><h5 class="card-title">${item.getName()}</h5></a>
                         <p class="card-text">${item.getDescriptor()}</p>
                         <p class="card-text">Price: <strong class="text-muted">${item.getPrice()} $</strong></p>
                     </div>

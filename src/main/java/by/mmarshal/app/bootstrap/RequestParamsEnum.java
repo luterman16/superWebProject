@@ -8,6 +8,8 @@ public enum RequestParamsEnum {
     ITEMS("items"),
     ITEMID("itemId"),
     TOTALPRICE("totalprice"),
+    SHOPPING_CART_PRODUCTS("itemsIdinCart"),
+    COUNT_CART_PRODUCTS("itemsInCort"),
     CATEGORY("categories");
 
     private final String value;

@@ -10,6 +10,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </head>
+<%@ include file="header.jsp" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <body>
 <div class="container">
@@ -29,6 +30,9 @@
                         <p class="card-text">${item.getDescriptor()}</p>
                         <p class="card-text">Price: <strong class="text-muted">${item.getPrice()} $</strong></p>
                     </div>
+                    <a href="${pageContext.request.contextPath}/eshop?command=deleteincart&itemId=${item.getId()}">
+                        <button type="button" class="btn btn-warning" style="width: 100%">Delete in cart</button>
+                    </a>
                 </div>
             </div>
             </c:forEach>

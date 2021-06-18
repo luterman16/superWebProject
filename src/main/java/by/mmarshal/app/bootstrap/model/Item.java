@@ -3,12 +3,12 @@ package by.mmarshal.app.bootstrap.model;
 import java.util.Objects;
 
 public class Item {
-    int id;
-    String name;
-    String image;
-    String descriptor;
-    double price;
-    String type;
+    private int id;
+    private String name;
+    private String image;
+    private String descriptor;
+    private double price;
+    private String type;
 
     public Item(int id, String name, String image, String descriptor, double price, String type) {
         this.id = id;

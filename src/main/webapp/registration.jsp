@@ -23,7 +23,19 @@
         <form method="post" class="needs-validation" novalidate>
             <input type="hidden" name="command" value="sign-in" >
             <div class="form-group  mb-6">
-                <label for="username">Username:</label>
+                <label for="name">name:</label>
+                <input type="text" class="form-control " id="name" placeholder="Enter name" name="name" required>
+                <div class="valid-feedback">Valid.</div>
+                <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+            <div class="form-group  mb-6">
+                <label for="lastname">lastname:</label>
+                <input type="text" class="form-control " id="lastname" placeholder="Enter lastname" name="lastname" required>
+                <div class="valid-feedback">Valid.</div>
+                <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+            <div class="form-group  mb-6">
+                <label for="username">email:</label>
                 <input type="text" class="form-control " id="username" placeholder="Enter username" name="username" required>
                 <div class="valid-feedback">Valid.</div>
                 <div class="invalid-feedback">Please fill out this field.</div>
@@ -34,16 +46,15 @@
                 <div class="valid-feedback">Valid.</div>
                 <div class="invalid-feedback">Please fill out this field.</div>
             </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input " type="checkbox" name="remember" required> I agree on blabla.
-                    <div class="valid-feedback">Valid.</div>
-                    <div class="invalid-feedback">Check this checkbox to continue.</div>
-                </label>
+            <div class="form-group">
+                <label for="password">Password repeat:</label>
+                <input type="password" class="form-control " id="password-repeat" placeholder="Enter password" name="password" required>
+                <div class="valid-feedback">Valid.</div>
+                <div class="invalid-feedback">Please fill out this field.</div>
             </div>
+
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
-        <a href="${pageContext.request.contextPath}/eshop?command=registration" class="link-success">Registration</a>
     </div>
     <div>
     </div>

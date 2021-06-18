@@ -21,8 +21,6 @@ public class SignInCommandImpl implements BaseCommand {
 
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
-        String login = request.getParameter(RequestParamsEnum.LOGIN.getValue());
-        String password = request.getParameter(RequestParamsEnum.PASSWORD.getValue());
 
         User user = getUser();
 
@@ -35,13 +33,24 @@ public class SignInCommandImpl implements BaseCommand {
     }
 
     private String checkReceivedUser(User user, HttpServletRequest request) throws RequestParamNullException {
-        String login = request.getParameter(RequestParamsEnum.LOGIN.getValue());
-        String password = request.getParameter(RequestParamsEnum.PASSWORD.getValue());
+        String login;
+        String password;
+        if(request.getParameter(RequestParamsEnum.LOGIN.getValue()) != null){
+            login = request.getParameter(RequestParamsEnum.LOGIN.getValue());
+        } else {
+            login = "";
+        }
 
-        validateParamNotNull(login);
-        validateParamNotNull(password);
+        if (request.getParameter(RequestParamsEnum.PASSWORD.getValue()) != null){
+            password =request.getParameter(RequestParamsEnum.PASSWORD.getValue());
+        } else {
+            password = "";
+        }
 
-        if (user != null && login.equals(ADMIN_LOGIN) && password.equals(ADMIN_PASSWORD)) {
+//        validateParamNotNull(login);
+//        validateParamNotNull(password);
+
+        if (login.equals(ADMIN_LOGIN) && password.equals(ADMIN_PASSWORD)) {
             List<Category> categories = new ArrayList<>();
 
             Category mobilePhones = new Category("Mobile phone", "mobile.jpg");
@@ -60,7 +69,7 @@ public class SignInCommandImpl implements BaseCommand {
 
             request.setAttribute(CATEGORY.getValue(), categories);
 
-            return PagesPathEnum.CATEGORIES.getPath();
+            return PagesPathEnum.SIGN_IN_PAGE.getPath();
         } else {
             return PagesPathEnum.SIGN_IN_PAGE.getPath();
         }

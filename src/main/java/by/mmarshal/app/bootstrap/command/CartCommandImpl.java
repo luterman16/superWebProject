@@ -1,6 +1,7 @@
 package by.mmarshal.app.bootstrap.command;
 
 import by.mmarshal.app.bootstrap.PagesPathEnum;
+import by.mmarshal.app.bootstrap.model.Cart;
 import by.mmarshal.app.bootstrap.model.Item;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,10 +13,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static by.mmarshal.app.bootstrap.RequestParamsEnum.ITEMS;
-import static by.mmarshal.app.bootstrap.RequestParamsEnum.TOTALPRICE;
+import static by.mmarshal.app.bootstrap.RequestParamsEnum.*;
 
-public class CartPage implements BaseCommand {
+public class CartCommandImpl implements BaseCommand {
 
     @Override
     public String execute(HttpServletRequest request){
@@ -25,19 +25,18 @@ public class CartPage implements BaseCommand {
     private String checkReceivedItem(HttpServletRequest request) {
         HttpSession session = request.getSession();
 
-        ArrayList<Integer> itemsInCart = new ArrayList<>();
-        if (session.getAttribute("itemsIdinCart") != null){
-            itemsInCart = (ArrayList<Integer>) session.getAttribute("itemsIdinCart");
-        };
+        Cart cart = new Cart((ArrayList<Integer>) session.getAttribute(SHOPPING_CART_PRODUCTS.getValue()));
+
+
 
         List<Item> items = new ArrayList<>();
         double totalPrice = 0;
         try  {
             Connection connection = (Connection) request.getAttribute("connection");
-            for (int i = 0; i< itemsInCart.size(); i++) {
+            for (int i = 0; i< cart.getProducts().size(); i++) {
 
                 PreparedStatement statement = connection.prepareStatement("SELECT * FROM items" +
-                        " WHERE ID = '" + itemsInCart.get(i) + "'", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+                        " WHERE ID = '" + cart.getProducts().get(i) + "'", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
                 ResultSet rs = statement.executeQuery();
                 while (rs.next()) {
                     int id = rs.getInt("id");

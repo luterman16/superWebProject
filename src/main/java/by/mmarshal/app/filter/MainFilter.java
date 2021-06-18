@@ -1,6 +1,11 @@
 package by.mmarshal.app.filter;
 
-import javax.servlet.*;
+import javax.servlet.Filter;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.FilterChain;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebInitParam;
 import java.io.IOException;
@@ -23,9 +28,6 @@ public class MainFilter implements Filter {
             servletResponse.setContentType("text/html");
             servletResponse.setCharacterEncoding("UTF-8");
         }
-//        if(servletRequest.getCharacterEncoding()== null){
-//                servletRequest.setCharacterEncoding("UTF-8");
-//            }
 
             filterChain.doFilter(servletRequest, servletResponse);
     }

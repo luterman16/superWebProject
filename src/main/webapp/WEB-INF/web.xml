@@ -30,6 +30,9 @@
         <param-name>DBURL</param-name>
         <param-value>jdbc:h2:mem:test;INIT=RUNSCRIPT FROM 'classpath:init.sql'</param-value>
     </context-param>
+    <welcome-file-list>
+        <welcome-file>/eshop</welcome-file>
+    </welcome-file-list>
 </web-app>
 
 
